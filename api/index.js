@@ -1,15 +1,23 @@
-import express from "express"
-import authRoutes from "./routes/posts.js";
+import express from "express";
+import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
+import cors from "cors";
 
 const app = express();
+app.use(cors());
 
 app.use(express.json())
-app.use("/api/posts", postRoutes)
-app.use("/api/user", userRoutes)
-app.use("/api/auth", authRoutes)
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/posts", postRoutes);
+
+app.get("/api/auth", (req, res) => {
+  console.log("Log")
+  console.log(authRoutes)
+  res.json(authRoutes);
+});
 
 app.listen(8800, () => {
-    console.log("Backend Connected!")
-})
+  console.log("Connected!");
+});

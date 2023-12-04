@@ -49,7 +49,7 @@ export default function Single() {
   return (
     <div className="single">
       <div className="content">
-        <img src={post?.img} alt="" />
+        <img src={`../upload/${post?.img}`} alt="" />
         <div className="user">
           <img
             src={post?.userImg || "https://i.imgur.com/6VBx3io.png"}

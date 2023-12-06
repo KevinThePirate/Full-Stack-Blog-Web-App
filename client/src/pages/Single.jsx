@@ -9,6 +9,7 @@ import moment from "moment";
 import { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from "../context/authContext"
+import parse from 'html-react-parser';
 
 export default function Single() {
 
@@ -71,7 +72,7 @@ export default function Single() {
         </div>
         <h1>{post.title}</h1>
         <div className="desc">
-          <p>{post.desc}</p> </div>
+          <p>{post.desc && parse(post.desc)}</p> </div>
       </div>
       <Menu cat={post.cat} />
     </div>
